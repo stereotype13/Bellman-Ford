@@ -1,8 +1,7 @@
 #pragma once
 #include <string>
 #include <list>
-
-#define INFINITY 1000
+#include <climits>
 
 class Link;
 
@@ -14,8 +13,8 @@ private:
 	std::list<Link*> outgoingLinks;
 
 public:
-	Node() : name{""}, distanceToRoot{INFINITY} {}
-	Node(std::string name) : name{name}, distanceToRoot{INFINITY} {}
+	Node() : name{""}, distanceToRoot{LONG_MAX} {}
+	Node(std::string name) : name{name}, distanceToRoot{LONG_MAX} {}
 	Node(std::string name, int distance) : name{name}, distanceToRoot{distance} {}
 
 	void processIncomingMessage(int distance);
