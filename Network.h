@@ -4,41 +4,22 @@
 #include "Link.h"
 
 class Network {
-public:
+private:
 	Node* root;
 	std::list<Node*> nodes;
 	std::list<Link*> links;
 
-	void addRoot(Node* root) {
-		this->root = root;
-		addNode(root);
-	}
+public:
 
-	void addNode(Node* node) {
-		nodes.push_back(node);
-		for(const auto& link : node->getOutgoingLinks()) {
-			links.push_back(link);
-		}
-	}
+	void addRoot(Node* root);
 
-	~Network() {
-		for(auto& node : nodes)
-			delete node;
+	void addNode(Node* node);
 
-		for(auto& link : links)
-			delete link;
-	}
+	~Network();
 
-	void begin() {
-		root->forwardMessages();
-	}
+	void begin();
 
-	void print() {
-		for(const auto& node : nodes) {
-			node->print();
-			std::cout << std::endl;
-		}
-	}
+	void print();
 
 
 };

@@ -2,19 +2,21 @@
 #include <string>
 #include <list>
 
+#define INFINITY 1000
 
 class Link;
 
 class Node {
-public:
-	Node() : name{""}, distanceToRoot{1000} {}
-	Node(std::string name) : name{name}, distanceToRoot{1000} {}
-	Node(std::string name, int distance) : name{name}, distanceToRoot{distance} {}
-
+private:
 	std::string name;
 	int distanceToRoot;
 	std::list<Link*> incomingLinks;
 	std::list<Link*> outgoingLinks;
+
+public:
+	Node() : name{""}, distanceToRoot{INFINITY} {}
+	Node(std::string name) : name{name}, distanceToRoot{INFINITY} {}
+	Node(std::string name, int distance) : name{name}, distanceToRoot{distance} {}
 
 	void processIncomingMessage(int distance);
 
