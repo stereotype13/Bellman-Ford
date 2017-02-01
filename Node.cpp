@@ -17,6 +17,11 @@ void Node::addIncomingLink(Link* link) {
 }
 
 void Node::addOutgoingLink(Link* link) {
+	Node* child = link->getChild();
+
+	if(child)
+		child->addIncomingLink(link);
+
 	outgoingLinks.push_back(link);
 }
 
